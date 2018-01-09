@@ -1,0 +1,2 @@
+C:\Users\Staz\Desktop\GTAV Solution\ScriptHookV DotNet Modding\ScriptHookV DotNet Modding\obj\Debug\ScriptHookV DotNet Modding.csprojResolveAssemblyReference.cache
+C:\Users\Staz\Desktop\GTAV Solution\ScriptHookV DotNet Modding\ScriptHookV DotNet Modding\obj\Debug\ScriptHookV DotNet Modding.csproj.CoreCompileInputs.cache
