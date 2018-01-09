@@ -14,8 +14,9 @@ namespace Staz_GTA_Screws
         private MenuPool pool;
 
         private Dictionary<UIMenuItem, Delegate> delegates;
-        
-       
+
+        private Array hashes;
+        private GTA.Vehicle veh = null;
         public UI()
         {
             menu = new UIMenu("Staz'z Screw Thingies", "Just some stupid things!");
@@ -24,7 +25,7 @@ namespace Staz_GTA_Screws
 
             delegates = new Dictionary<UIMenuItem, Delegate>();
             AddButton("Kill Everyone", Actions.KILL_ALL);
-            AddButton("Kill Everyone Repedatly",  Actions.REPEATING_KILL_ALL);
+            AddButton("Kill Everyone Repedatly", Actions.REPEATING_KILL_ALL);
 
             AddButton("Explode Everything", Actions.EXPLODE_ALL);
             AddButton("Explode Everything Repeatadly", Actions.REPEATING_EXPLOSION);
@@ -34,14 +35,17 @@ namespace Staz_GTA_Screws
 
             AddButton("Remove All Entities", Actions.REMOVE_ENTITIES);
             AddButton("Spawn Car", Actions.SPAWN_CAR);
-            menu.OnItemSelect += OnClick;
+            AddButton("Teleport to Marker", Actions.TELEPORT_TO_MARKER);
 
+            AddButton("Give All Weapons", Actions.GIVE_ALL_WEAPONS);
+            AddButton("No Reload", Actions.NO_RELOAD);
+            menu.OnItemSelect += OnClick;
         }
 
         public void OnKeyDown(object o, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F6)
-              menu.Visible = !menu.Visible;
+                menu.Visible = !menu.Visible;
 
             pool.ProcessKey(e.KeyCode);
 
@@ -65,10 +69,10 @@ namespace Staz_GTA_Screws
         private void AddButton(String text, ToggleEvent toggleD)
         {
             UIMenuItem item = new UIMenuItem(text);
-            
+
             this.delegates.Add(item, toggleD);
             this.props.Add(item, false);
-            
+
             menu.AddItem(item);
         }
 
@@ -80,13 +84,13 @@ namespace Staz_GTA_Screws
             else if (del is ToggleEvent)
                 ((ToggleEvent)del)(toggle(item));
         }
-        
+
         private Dictionary<UIMenuItem, Boolean> props = new Dictionary<UIMenuItem, Boolean>();
         private bool toggle(UIMenuItem item)
         {
             if (!props.ContainsKey(item))
                 props[item] = false;
-            
+
             if (!props[item])
             {
                 item.SetLeftBadge(UIMenuItem.BadgeStyle.Tick);
@@ -97,7 +101,7 @@ namespace Staz_GTA_Screws
             }
             props[item] = !props[item];
             return props[item];
-            
+
         }
     }
 

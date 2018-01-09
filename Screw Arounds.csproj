@@ -54,11 +54,6 @@
     <Compile Include="source\UI.cs" />
     <Compile Include="source\Utils.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetPath)" "F:\Program Files\Rockstar North\GTA V\scripts"</PostBuildEvent>
